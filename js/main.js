@@ -20,15 +20,25 @@ $(document).ready(function() {
 		var itemBox = $(".items");
 		itemBox.html("");
 
-		todo.forEach(function(event){
-			itemBox.append("<li><article><button class='check'></button><p>"+event.content+"</p><input type='text' class='edit-todo' value='learn html'><button class='delete'>X</button></article></li>");
+		todo.forEach(function(todo){
+			if (todo.complete===false){
+				itemBox.append("<li><article><button class='check'></button><p>"+todo.content+"</p><input type='text' class='edit-todo' value='learn html'><button class='delete'>X</button></article></li>");
+			}
+			else {
+				itemBox.append("<li><article class='completed'><button class='check'></button><p>"+todo.content+"</p><input type='text' class='edit-todo' value='learn css'><button class='delete'>X</button></article></li>");
+			}
 		})
 	}
 
-	$(".check").click(function()) {
-		var complete = toNewBox.val();
-		var crossOut = $(".items").wrap("<strike>");
-	}
+	$("body").on("click",".check",function() {
+		var content = $(this).parent().find("p").text();
+		todo.forEach(function(todo){
+			if(content === todo.content){
+				todo.complete = true;
+			}
+		})
+		toNewBox();
+	});
 
 
 });
