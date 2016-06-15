@@ -34,6 +34,7 @@ $(document).ready(function() {
 		})
 	}
 
+		//function for checking off/striking out
 	$("body").on("click",".check",function() {
 		var content = $(this).parent().find("p").text();
 		todo.forEach(function(todo){
@@ -44,7 +45,7 @@ $(document).ready(function() {
 		toNewBox();
 	});
 
-
+		//function for deleting item
 	$("body").on("click",".delete",function() {
 		var content = $(this).parent().find("p").text();
 		todo.forEach(function(aTodo,index){
