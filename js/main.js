@@ -6,12 +6,14 @@ $(document).ready(function() {
 		this.complete = complete;
 	}
 
-
+	//accessing from HTML the input class and assigining it a variable
 	var input = $(".new-todo");
 
 	//array for items to filter through
 	var todo = [];
 
+	//$("form").on('submit'...tells computer to submit on enter key.
+	//function that pushes through new todo item and makes creates its own "box"
 	$("form").on('submit',function(e){
 		e.preventDefault();
 		var content = input.val();
@@ -20,6 +22,7 @@ $(document).ready(function() {
 		toNewBox();
 	})
 
+	//function for "toNewBox", creates path for each item to run through the array
 	function toNewBox() {
 		var itemBox = $(".items");
 		itemBox.html("");
@@ -55,6 +58,8 @@ $(document).ready(function() {
 		})
 		toNewBox();
 	});
+
+	todo.forEach(function())
 
 });
 
