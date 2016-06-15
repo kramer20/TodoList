@@ -20,9 +20,10 @@ $(document).ready(function() {
 		var newTodo = new ToDoItem(content,false);
 		todo.push(newTodo);
 		toNewBox();
+		itemCount();
 	});
 
-	//when click, shows all active
+	//when click, shows active
 	$("body").on("click",".show-active",function() {
 		toActive();
 	});
@@ -32,9 +33,24 @@ $(document).ready(function() {
 		toComplete();
 	});
 
+	//shows ALL items
 	$("body").on("click",".show-all",function() {
 		toNewBox();
 	});
+
+	//function to calculate the item count
+	function itemCount () {
+		var complete = 0;
+		todo.forEach(function(todo){
+			if (todo.complete === true){
+				complete++;
+			};
+		});
+		var remaining = todo.length - complete;
+		$(".incomplete-items").html(remaining);
+		
+	};
+
 
 	//function for "toNewBox", creates path for each item to run through the array
 	function toNewBox() {
@@ -88,6 +104,7 @@ $(document).ready(function() {
 			}
 		});
 		toNewBox();
+		itemCount();
 	});
 
 		//function for deleting item
@@ -99,6 +116,7 @@ $(document).ready(function() {
 			}
 		});
 		toNewBox();
+		itemCount();
 	});
 
 });
