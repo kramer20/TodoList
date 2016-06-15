@@ -54,7 +54,6 @@ $(document).ready(function() {
 
 
    	$("body").on("click",".delete",function(){
-        // get my index from my ID rather than indexOf:
         var index=parseInt(this.id.split('_')[1]);
         this.parentNode.removeChild(this);
 
