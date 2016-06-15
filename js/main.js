@@ -1,11 +1,15 @@
 $(document).ready(function() {
 	
+	//object for items
 	function ToDoItem(content,complete){
 		this.content = content;
 		this.complete = complete;
 	}
 
+
 	var input = $(".new-todo");
+
+	//array for items to filter through
 	var todo = [];
 
 	$("form").on('submit',function(e){
@@ -40,26 +44,18 @@ $(document).ready(function() {
 		toNewBox();
 	});
 
-	index=todo.indexOf(this);
 
-	//$("body").on("click",".delete",function() {
-		//var content = $(this).parent().find("p").text();
-		//todo.forEach(function(todo,index){
-			//if(content === todo.content){
-				//todo.splice(index,1);
-			//}
-		//})
-		//toNewBox();
-	//});
-
-
-   	$("body").on("click",".delete",function(){
-        var index=parseInt(this.id.split('_')[1]);
-        this.parentNode.removeChild(this);
-
-        todo.splice(index,1);
-     	
-     		console.log(todo);
-     	})	
+	$("body").on("click",".delete",function() {
+		var content = $(this).parent().find("p").text();
+		todo.forEach(function(aTodo,index){
+			if(content === aTodo.content){
+				todo.splice(index,1);
+			}
+		})
+		toNewBox();
+	});
 
 });
+
+
+
